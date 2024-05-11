@@ -1,3 +1,6 @@
+# Angular-signature-pad-and-pdf-viewer
+Signature pad, ng2 pdf viewer and ngx extended pdf viewer
+
 # AngularESignaturePad
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
