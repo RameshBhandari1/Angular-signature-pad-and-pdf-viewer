@@ -1,35 +1,32 @@
-<h4>Signature</h4>
-<canvas
-  #canvas
-  (touchstart)="startDrawing($event)"
-  (touchmove)="moved($event)"
-  width="700"
-  height="200"
-></canvas>
-<p class="error-message" *ngIf="signatureNeeded">Signature is required!</p>
-
-<div class="buttons flex justify-between">
-  <button (click)="clearPad()">Clear</button>
-  <button (click)="savePad()">Submit the signature</button>
+<div>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/extended-pdf-viewer">Extended Pdf Viewer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signature-pad-nad-pdf-viewer">Signature Pad</a>
+          </li>
+        </ul>
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">Search</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
 </div>
-
-<div *ngIf="signatureImg">
-  <p>Signature in Base64Encoded Format</p>
-  <img src="{{ signatureImg }}" alt="" srcset="" />
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-
-
-<div class="pdf-container">
-  <pdf-viewer [src]="pdfSrc" (after-load-complete)="pdfLoaded($event)"
-              [render-text]="true" style="display: block; width: auto; height: 500px;"></pdf-viewer>
-</div>
-
-<h4>PDF Viewer</h4>
-<ngx-extended-pdf-viewer #pdfViewer [src]="pdfSrc" [contextMenuAllowed]="false"
-                         [enablePrint]="false"
-                         [showSidebarButton]="false"
-                         [showOpenFileButton]="false"
-                         [showSecondaryToolbarButton]="false"
-                         height="80vh"></ngx-extended-pdf-viewer>
-
-<!-- <button (click)="downloadPdf()">Download it</button> -->

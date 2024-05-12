@@ -1,0 +1,14 @@
+<h4 class="mt-3 mb-3">Extended PDF Viewer</h4>
+<div class="mb-3 mt-3">
+  <input class="form-control" (change)="uploadPdf($event)" type="file" id="formFile">
+</div>
+<ngx-extended-pdf-viewer *ngIf="uploadedBase64File" #pdfViewer [base64Src]="uploadedBase64File" [contextMenuAllowed]="false"
+                         [enablePrint]="false"
+                         [showSidebarButton]="false"
+                         [showOpenFileButton]="false"
+                         [showSecondaryToolbarButton]="false"
+                         [showDownloadButton]="false"
+                         [showStampEditor]="false"
+                         height="80vh"></ngx-extended-pdf-viewer>
+
+<button type="button" class="btn btn-primary mt-3" (click)="downloadPdf()">Download it</button>

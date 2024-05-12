@@ -1,0 +1,28 @@
+
+<h4 class="mt-3 mb-3">Signature Pad and Pdf Viewer</h4>
+<div class="d-flex justify-between mt-2">
+  <canvas
+    #canvas
+    class="border border-success rounded"
+    (touchstart)="startDrawing($event)"
+    (touchmove)="moved($event)"
+    width="700"
+    height="200"
+  ></canvas>
+
+  <div *ngIf="signatureImg" class="border border-danger rounded">
+    <p class="ms-4 mb-0">Signature in Base64Encoded Format</p>
+    <img src="{{ signatureImg }}" alt="" srcset="" />
+  </div>
+</div>
+
+<div class="buttons flex justify-between mt-2">
+  <p class="error-message" *ngIf="signatureNeeded">Signature is required!</p>
+  <button type="button" class="btn btn-danger" (click)="clearPad()">Clear</button>
+  <button type="button" class="btn btn-success ms-3" (click)="savePad()">Submit the signature</button>
+</div>
+
+<div class="pdf-container">
+  <pdf-viewer [src]="pdfSrc" (after-load-complete)="pdfLoaded($event)"
+              [render-text]="true" style="display: block; width: auto; height: 500px;"></pdf-viewer>
+</div>
