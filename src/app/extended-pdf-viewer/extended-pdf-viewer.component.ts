@@ -8,7 +8,6 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./extended-pdf-viewer.component.scss']
 })
 export class ExtendedPdfViewerComponent implements OnInit {
-  pdfSrc = '../assets/pdf-sample.pdf';
   base64PdfData: any;
   uploadedBase64File: any;
 
@@ -59,10 +58,11 @@ export class ExtendedPdfViewerComponent implements OnInit {
       }
       // Converted the PDF data in base64 format
       this.base64PdfData = reader?.result?.split(',')[1];
+      const base64Pd = reader?.result?.split(',')[1];
 
       // Create a link with the base64 data
       const link = document.createElement('a');
-      link.href = `data:application/pdf;base64,${this.base64PdfData}`;
+      link.href = `data:application/pdf;base64,${base64Pd}`;
       link.download = 'edited_pdf.pdf';
 
       // Trigger the download
